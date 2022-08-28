@@ -1,0 +1,2 @@
+C:\Users\Admin\Desktop\MouseClicker修改2022年1月27日00点18分ReProject - Example project\MouseClicker\bin\Release\net5.0-windows\publish\win-x86\MouseClicker.pdb
+C:\Users\Admin\Desktop\MouseClicker修改2022年1月27日00点18分ReProject - Example project\MouseClicker\bin\Release\net5.0-windows\publish\win-x86\MouseClicker.exe

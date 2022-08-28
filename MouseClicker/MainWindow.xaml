@@ -1,0 +1,113 @@
+﻿<Window
+    x:Class="MouseClicker.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MouseClicker"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MouseClicker"
+    Width="400"
+    Height="250"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <Menu VerticalAlignment="Top" DockPanel.Dock="Top">
+            <MenuItem Header="选项">
+                <MenuItem Click="MenuItem_Click" Header="关于" />
+                <MenuItem Click="MenuItem_Click_1" Header="退出" />
+            </MenuItem>
+        </Menu>
+        <Grid Margin="20,10,20,20">
+            <StackPanel
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                IsEnabled="{Binding ENABLE}">
+                <Grid>
+                    <Label
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="鼠标键位" />
+                    <ComboBox
+                        Width="250"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Background="White"
+                        SelectedIndex="{Binding MOUSE_KEY, Mode=TwoWay}">
+                        <System:String>左键</System:String>
+                        <System:String>右键</System:String>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0,5,0,0">
+                    <Label
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="点击方式" />
+                    <ComboBox
+                        Width="250"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        SelectedIndex="{Binding MOUSE_MODE, Mode=TwoWay}">
+                        <System:String>点按</System:String>
+                        <System:String>长按</System:String>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0,5,0,0" Visibility="{Binding TIME_Visibility}">
+                    <Label
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="时间间隔(ms)" />
+                    <TextBox
+                        Width="250"
+                        Height="21.24"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="{Binding TIME_SPAN, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="0,5,0,0">
+                    <Label
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="启动热键" />
+                    <ComboBox
+                        Width="250"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        SelectedIndex="0"
+                        SelectedValue="{Binding KEYBOARD_KEY, Mode=TwoWay}">
+                        <System:String>F4</System:String>
+                        <System:String>F6</System:String>
+                        <System:String>F7</System:String>
+                        <System:String>F8</System:String>
+                        <System:String>F9</System:String>
+                        <System:String>F10</System:String>
+                        <System:String>F12</System:String>
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+            <Button
+                Name="Button"
+                Width="100"
+                Height="25"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Click="Button_Click"
+                Content="启用" />
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock><Run Text="当你按下启用后，再按下键盘上的" /></TextBlock>
+                    <TextBlock><Run Text="{Binding KEYBOARD_KEY}" /></TextBlock>
+                </StackPanel>
+                <TextBlock><Run Text="连点器即开始运行" /></TextBlock>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
